@@ -1,9 +1,9 @@
-package com.baekjoon.level.sort;
+package com.baekjoon;
 
 
 import java.util.*;
 
-public class prob2 {
+public class prob2751 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int numOfNum = scanner.nextInt();
