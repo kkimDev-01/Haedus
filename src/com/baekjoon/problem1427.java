@@ -1,5 +1,9 @@
 package com.baekjoon;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -73,26 +77,95 @@ class problem1427_2 {
     }
 }
 
+/*
+문제 :
+해설 :
+결과
+    - 메모리 : 14240
+    - 시간 : 128
+    - 시간복잡도 : N log2(N)
+정리내용(블로그)
+    -  : Scanner_vs_BufferedReader
+    -  :
+    -  :
+*/
 //3. BufferedReader + toCharArray + Arrays.sort
 class problem1427_3 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        char[] arr = br.readLine().toCharArray();
 
+        Arrays.sort(arr);
+
+        for (int i = arr.length -1; i>=0; i--){     //굳이 sort의 역순 옵션을 쓰지 않는구나
+            System.out.print(arr[i]);
+        }
     }
 }
+
+/*
+문제 :
+해설 :
+결과
+    - 메모리 : 14224
+    - 시간 : 124
+    - 시간복잡도 : O(n)
+정리내용(블로그)
+    -  :
+    -  :
+    -  :
+*/
 
 //4. BufferedReader + charAt + 카운팅 정렬
 class problem1427_4 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+        int[] counting = new int[10];
+        String s = br.readLine();
+
+        for (int i = 0; i < s.length(); i++){
+            counting[s.charAt(i) - '0']++;      // -'0' 으로 인해 char가 int로 변환된다.
+        }
+
+        for (int i = 9; i >=0; i--){
+            while (counting[i]-- > 0){
+                System.out.print(i);
+            }
+        }
     }
 }
 
+/*
+문제 :
+해설 :
+결과
+    - 메모리 : 14112
+    - 시간 : 120
+    - 시간복잡도 : O(n)
+정리내용(블로그)
+    -  :
+    -  :
+    -  :
+*/
+
 //5. InputStream + 카운팅 정렬
 class problem1427_5 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        InputStream in = System.in;
 
+        int[] counting = new int[10];
+        int c;
+        while((c = in.read()) != '\n') {
+            counting[c - '0']++;
+        }
 
+        for (int i = 9; i >= 0; i--){
+            while (counting[i]-- > 0){
+                System.out.print(i);
+            }
+        }
     }
 }
