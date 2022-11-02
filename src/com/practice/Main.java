@@ -3,19 +3,19 @@ package com.practice;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
-        System.out.println("hello world!");
+        // write your code here
 
-        int length = 100;
+        StringBuilder sb = new StringBuilder();
 
-        System.out.println(length >> 3); //비트 연산 : 12%
-        System.out.println(length >> 6);
+        StringBuilder sb1 = new StringBuilder();
 
-        int seventh = (length >> 3) + (length >> 6) + 1;
+        sb.append("1");
+        sb1.append("2");
 
-        System.out.println(seventh);
+        sb.append(sb1);
 
-        System.out.println('9'-'0');
+        System.out.println(sb);
 
     }
+
 }
