@@ -65,8 +65,8 @@ class prob15649_1 {
 //[BufferedReader + StringBuilder + N과 M 전역변수화]
 class prob15649_2 {
 
-    public static int N;	// 정적변수로 변경
-    public static int M;	// 정적변수로 변경
+    public static int N;	// 정적변수로 변경 //수의 범위
+    public static int M;	// 정적변수로 변경 //각 행의 길이
     public static int[] arr;
     public static boolean[] visit;
     public static StringBuilder sb = new StringBuilder();
@@ -80,8 +80,9 @@ class prob15649_2 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        arr = new int[M];
         visit = new boolean[N];
+        arr = new int[M];
+
 
         // 정적변수를 쓰면 되기 때문에 굳이 N과 M을 넘겨줄 필요 없다.
         dfs(0);

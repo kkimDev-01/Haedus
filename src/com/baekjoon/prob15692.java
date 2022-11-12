@@ -6,23 +6,23 @@ import java.io.InputStreamReader;
 
 
 /*
-문제 : https://www.acmicpc.net/status?user_id=kkheentech&problem_id=15650&from_mine=1
-해설 : https://st-lab.tistory.com/115
+문제 : https://www.acmicpc.net/status?user_id=kkheentech&problem_id=15652&from_mine=1
+해설 : 
 정리내용(블로그)
     -  : 
     -  : 
     -  : 
 */
-public class prob15650 {
+public class prob15692 {
 }
 
 /*
 결과 
-    - 메모리 : 14244
-    - 시간 : 124
+    - 메모리 : 16596
+    - 시간 : 152
     - 시간복잡도 : 
 */
-class prob15650_1 {
+class prob15692_1 {
 
     public static int N;
     public static int M;
@@ -44,7 +44,7 @@ class prob15650_1 {
 
         dfs(1,0);
         System.out.println(sb);
-        
+
     }
 
     private static void dfs(int at, int depth) {
@@ -58,7 +58,7 @@ class prob15650_1 {
 
         for (int i = at; i <= N; i++){
             arr[depth] = i;
-            dfs(i + 1, depth + 1);
+            dfs(i, depth + 1);
         }
 
     }

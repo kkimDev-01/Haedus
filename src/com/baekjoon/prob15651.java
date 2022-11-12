@@ -4,25 +4,24 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 /*
-문제 : https://www.acmicpc.net/status?user_id=kkheentech&problem_id=15650&from_mine=1
-해설 : https://st-lab.tistory.com/115
+문제 : https://www.acmicpc.net/problem/15651
+해설 : 
 정리내용(블로그)
     -  : 
     -  : 
     -  : 
 */
-public class prob15650 {
+public class prob15651 {
 }
 
 /*
 결과 
-    - 메모리 : 14244
-    - 시간 : 124
+    - 메모리 : 68480
+    - 시간 : 468
     - 시간복잡도 : 
 */
-class prob15650_1 {
+class prob15651_1 {
 
     public static int N;
     public static int M;
@@ -42,12 +41,12 @@ class prob15650_1 {
         arr = new int[M];
         visit = new boolean[N];
 
-        dfs(1,0);
+        dfs(0);
         System.out.println(sb);
-        
+
     }
 
-    private static void dfs(int at, int depth) {
+    private static void dfs(int depth) {
         if (depth == M) {
             for (int val : arr) {
                 sb.append(val).append(" ");
@@ -56,9 +55,9 @@ class prob15650_1 {
             return;
         }
 
-        for (int i = at; i <= N; i++){
+        for (int i = 1; i <= N; i++){
             arr[depth] = i;
-            dfs(i + 1, depth + 1);
+            dfs( depth + 1);
         }
 
     }
