@@ -4,35 +4,69 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+class subMain {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+
+        int BATCH_SIZE = 10;
+
+        for (int i = 0; i < 112; i++){
+            list.add(i);
+        }
+
+        List<Integer> subList = list.subList(100, list.size());
+
+        for (int item : subList){
+            System.out.println(item);
+        }
+    }
+}
+
 public class Main {
 
     public static void main(String[] args) {
         // write your code here
+        /*
+        long start = 0;
 
-        StringBuilder sb = new StringBuilder();
+        long n;
 
-        StringBuilder sb1 = new StringBuilder();
+        for (int i = 0; i < 10; i++){
+            n = start++;
+            String str = Long.toString(n);
+            System.out.println(str);
 
-        sb.append("1");
-        sb1.append("2");
+            System.out.println("Start = "+ start);
+        }
 
-        sb.append(sb1);
+        System.out.println(start);
+        */
 
-        System.out.println(sb);
+        List<Integer> list = new ArrayList<>();
 
-        List<Integer> al = new ArrayList<Integer>();
-        al.add(100);
-        al.add(0);
-        al.add(30);
-        al.add(10);
-        al.add(2);
+        int BATCH_SIZE = 10;
 
-        // The last parameter specifies the comparator
-        // method used for sorting.
-        int index = Collections.binarySearch(
-                al, 50, Collections.reverseOrder());
+        for (int i = 0; i < 112; i++){
+            list.add(i);
+        }
 
-        System.out.println("Found at index " + index);
+        int totalPage = list.size()/BATCH_SIZE + 1;
+
+        for (int page = 0; page < totalPage; page++){
+
+            int start = page * BATCH_SIZE;
+            int end = (page + 1) * BATCH_SIZE;
+
+            List<Integer> subList = list.subList(start, Math.min(end, list.size()));
+
+            System.out.println(subList.get(0));
+            System.out.println(subList.get(subList.size()-1));
+
+        }
+
+
     }
 
 }
+
+
