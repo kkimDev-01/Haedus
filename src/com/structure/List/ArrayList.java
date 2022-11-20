@@ -1,7 +1,6 @@
 package com.structure.List;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ArrayList<E> implements List<E> {
     private static final int DEFAULT_CAPACITY = 10;
@@ -100,20 +99,23 @@ public class ArrayList<E> implements List<E> {
 
     }
 
-    public void set(int index, E value) {
+
+    public E set(int index, E value) {
         if (index >= size || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         else {
             array[index] = value;
         }
+
+        return value;
     }
 
     @Override
     public int indexOf(Object o) {
         int i = 0;
 
-        for (int i = 0; i < size; i++) {
+        for (i = 0; i < size; i++) {
             if (array[i].equals(o)) {
                 return i;
             }
@@ -132,6 +134,21 @@ public class ArrayList<E> implements List<E> {
     }
 
     @Override
+    public ListIterator<E> listIterator() {
+        return null;
+    }
+
+    @Override
+    public ListIterator<E> listIterator(int index) {
+        return null;
+    }
+
+    @Override
+    public List<E> subList(int fromIndex, int toIndex) {
+        return null;
+    }
+
+    @Override
     public boolean contains(Object o) {
 
         if (indexOf(o) >= 0) {
@@ -139,6 +156,11 @@ public class ArrayList<E> implements List<E> {
         }
 
         return false;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return null;
     }
 
     @SuppressWarnings("unchecked")
@@ -180,6 +202,31 @@ public class ArrayList<E> implements List<E> {
     }
 
     @Override
+    public boolean containsAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends E> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(int index, Collection<? extends E> c) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
     public int size() {
         return size;
     }
@@ -199,5 +246,33 @@ public class ArrayList<E> implements List<E> {
         resize();
     }
 
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
 
+        ArrayList<?> cloneList = (ArrayList<?>) super.clone();
+
+        cloneList.array = new Object[size];
+
+        System.arraycopy(array, 0, cloneList.array,0, size);
+
+        return cloneList;
+
+    }
+
+    public Object[] toArray() {
+        return Arrays.copyOf(array, size);
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public <T> T[] toArray(T[] a) {
+
+        if (a.length < size) {
+            return (T[]) Arrays.copyOf(array, size, a.getClass());
+        }
+
+        System.arraycopy(array, 0, a, 0, size);
+        return a;
+
+    }
 }//class
