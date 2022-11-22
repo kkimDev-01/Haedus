@@ -1,4 +1,4 @@
-package com.leetcode;
+package com.leetcode.unclassified;
 
 import java.util.Arrays;
 
