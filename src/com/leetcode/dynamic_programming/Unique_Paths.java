@@ -1,4 +1,4 @@
-package com.leetcode.unclassified;
+package com.leetcode.dynamic_programming;
 
 public class Unique_Paths {
     public static void main(String[] args) {
