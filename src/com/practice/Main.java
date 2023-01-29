@@ -8,8 +8,23 @@ public class Main {
 
         //int[] nums = {1, 3, -1, -3, 5, 3, 6, 7};
         //medianSlidingWindow(nums, 3);
+        //[[2,6,8],[3,7,10],[5,8,11]] , 5
+        //[[4,6],[2,3],[8,9]] , 10
+
+        Integer[] a1 = {2,6,8};
+        Integer[] a2 = {3,7,10};
+        Integer[] a3 = {5,8,11};
 
 
+        List<Integer[]> lists = new ArrayList<>();
+        lists.add(a1);
+        lists.add(a2);
+        lists.add(a3);
+
+        findKthSmallest(lists, 50);
+
+
+    /*
       List < List < Integer >> inputs =
                 (Arrays.asList(
                         Arrays.asList(1, 1), Arrays.asList(5, 5), Arrays.asList(8, 8), Arrays.asList(4, 4), Arrays.asList(6, 6), Arrays.asList(10, 10), Arrays.asList(7, 7)
@@ -22,6 +37,77 @@ public class Main {
       }
 
         tasks(list);
+
+     */
+    }
+
+
+    public static int findKthSmallest(List<Integer[]> lists, int k) {
+        // Your code will replace this placeholder return statement
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+
+        int res = 0;
+        int rank = 0;
+
+
+        //assumption : there is no empty list
+        for (Integer[] list : lists) {
+            minHeap.add(list[0]);
+        }
+
+        rank++;
+
+
+        outerloop:
+        while (k >0) {
+            for (int i = 0; i < lists.size(); i++) {
+
+                if (minHeap.isEmpty()){
+                    break outerloop;
+                }
+
+                if (lists.get(i).length - 1 < rank && i < lists.size() - 1) {
+                    continue;
+                }
+                minHeap.add(lists.get(i)[rank]);
+                res = minHeap.poll();
+                k--;
+                if (k == 0){
+                    return res;
+                }
+            }
+            rank++;
+        }
+
+        return res;
+    }
+
+
+    public static int[] mergeSorted(int[] nums1, int m, int[] nums2, int n) {
+
+        // Write your code here
+
+        int lastIdx = nums1.length-1;
+
+        while (m - 1>= 0 && n - 1 >= 0) {
+            if (nums1[m-1] <= nums2[n-1]) {
+                nums1[lastIdx] = nums2[n - 1];
+                n--;
+            } else {
+                nums1[lastIdx] = nums1[m - 1];
+                m--;
+            }
+            lastIdx--;
+        }
+
+        if (m-1 < 0) {
+            for (int i = 0; i < n; i++){
+                nums1[i] = nums2[i];
+            }
+        }
+
+        return nums1;
     }
 
 
