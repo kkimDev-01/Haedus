@@ -1,7 +1,5 @@
 package com.work.jenkins.stop.api
 
-package com.work
-
 node {
 
 
