@@ -41,6 +41,57 @@ public class Main {
      */
     }
 
+    public static List<List<Integer>> kSmallestPairs(int[] list1, int[] list2, int target) {
+        // Your code will replace this placeholder return statement
+
+        Map<Pair, Integer> map = new HashMap<>();
+
+        Pair nextPair;
+
+
+        return new ArrayList<>();
+    }
+
+    
+
+    class Pair {
+
+        private int x;
+        private int y;
+
+        public Pair(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        public int getX() {
+            return x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Pair pair = (Pair) o;
+            return x == pair.x && y == pair.y;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(x, y);
+        }
+    }
+
+
+
+
+
+
+
 
     public static int findKthSmallest(List<Integer[]> lists, int k) {
         // Your code will replace this placeholder return statement
@@ -49,11 +100,21 @@ public class Main {
 
         int res = 0;
         int rank = 0;
+        int sumLength = 0;
 
 
         //assumption : there is no empty list
         for (Integer[] list : lists) {
             minHeap.add(list[0]);
+            sumLength += list.length;
+        }
+
+        if (sumLength < k) {
+            int max = Integer.MIN_VALUE;
+            for (Integer[] list : lists) {
+                max = Math.max(list[list.length-1], max);
+            }
+            return max;
         }
 
         rank++;
@@ -63,11 +124,8 @@ public class Main {
         while (k >0) {
             for (int i = 0; i < lists.size(); i++) {
 
-                if (minHeap.isEmpty()){
-                    break outerloop;
-                }
 
-                if (lists.get(i).length - 1 < rank && i < lists.size() - 1) {
+                if (lists.get(i).length - 1 < rank) {
                     continue;
                 }
                 minHeap.add(lists.get(i)[rank]);
