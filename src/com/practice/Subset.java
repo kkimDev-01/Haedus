@@ -8,7 +8,6 @@ public class Subset {
 
     }
 
-
     public static List<HashSet<Integer>> findAllSubsets(List<Integer> v) {
         // Write your code here
 
